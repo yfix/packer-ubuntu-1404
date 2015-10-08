@@ -1,6 +1,8 @@
 {
 	"variables": {
-		"atlas_token": "{{env `ATLAS_TOKEN`}}"
+		"atlas_token": "{{env `ATLAS_TOKEN`}}",
+		"atlas_username": "yfix",
+		"atlas_name": "trusty64"
 	},
 	"provisioners": [
 		{
@@ -51,7 +53,7 @@
 			"shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"virtualbox_version_file": ".vbox_version",
-			"vm_name": "yfix-packer-ubuntu-14.04-amd64",
+			"vm_name": "{{user `atlas_username`}}-packer-ubuntu-14.04-amd64",
 			"vboxmanage": [
 				[
 					"modifyvm",
@@ -71,15 +73,17 @@
 	"post-processors": [
 		{
 			"type": "vagrant",
-			"output": "builds/yfix-{{.Provider}}-ubuntu1404.box"
+			"output": "builds/{{user `atlas_username`}}-{{.Provider}}-ubuntu1404.box"
 		},
 		{
 			"type": "atlas",
+			"only": ["virtualbox-iso"],
 			"token": "{{user `atlas_token`}}",
-			"artifact": "yfix/trusty64",
+			"artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
 			"artifact_type": "vagrant.box",
 			"metadata": {
-				"created_at": "{{timestamp}}"
+				"created_at": "{{timestamp}}",
+				"provider": "virtualbox"
 			}
 		}
 	]
