@@ -1,4 +1,7 @@
 {
+	"variables": {
+		"atlas_token": "{{env `ATLAS_TOKEN`}}",
+	},
 	"provisioners": [
 		{
 			"type": "shell",
@@ -67,8 +70,17 @@
 	],
 	"post-processors": [
 		{
-			"output": "builds/{{.Provider}}-ubuntu1404.box",
+			"output": "builds/yfix-{{.Provider}}-ubuntu1404.box",
 			"type": "vagrant"
+		},
+		{
+			"type": "atlas",
+			"token": "{{user `atlas_token`}}",
+			"artifact": "yfix/trusty64",
+			"artifact_type": "vagrant",
+			"metadata": {
+				"created_at": "{{timestamp}}"
+			}
 		}
 	]
 }
