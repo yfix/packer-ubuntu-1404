@@ -1,6 +1,6 @@
 {
 	"variables": {
-		"atlas_token": "{{env `ATLAS_TOKEN`}}",
+		"atlas_token": "{{env `ATLAS_TOKEN`}}"
 	},
 	"provisioners": [
 		{
@@ -70,8 +70,8 @@
 	],
 	"post-processors": [
 		{
-			"output": "builds/yfix-{{.Provider}}-ubuntu1404.box",
-			"type": "vagrant"
+			"type": "vagrant",
+			"output": "builds/yfix-{{.Provider}}-ubuntu1404.box"
 		},
 		{
 			"type": "atlas",
