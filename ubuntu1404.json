@@ -71,7 +71,7 @@
 		}
 	],
 	"post-processors": [
-		{
+		[{
 			"type": "vagrant",
 			"output": "builds/{{user `atlas_username`}}-{{.Provider}}-ubuntu1404.box"
 		},
@@ -85,6 +85,6 @@
 				"created_at": "{{timestamp}}",
 				"provider": "virtualbox"
 			}
-		}
+		}]
 	]
 }
