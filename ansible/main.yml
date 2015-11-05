@@ -3,10 +3,9 @@
   sudo: yes
   gather_facts: yes
 
-  roles:
-    - packer-debian
-
   tasks:
+    - include: vagrant.yml
+
     - apt: "name={{ item }} state=installed"
       with_items:
         - git
