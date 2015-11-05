@@ -4,8 +4,7 @@
   gather_facts: yes
 
   roles:
-    - geerlingguy.nfs
-    - geerlingguy.packer-debian
+    - packer-debian
 
   tasks:
     - apt: "name={{ item }} state=installed"
@@ -17,3 +16,4 @@
         - mc
         - htop
         - iotop
+        - nfs-common
