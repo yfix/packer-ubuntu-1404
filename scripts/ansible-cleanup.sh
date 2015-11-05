@@ -8,6 +8,8 @@ set -ex
 sed -i 's/^GRUB_CMDLINE_LINUX=""$/GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"/' /etc/default/grub
 update-grub
 
+# Remove uneeded packages (by regex).
+apt-get -y remove '.*-dev$'
 # Uninstall Ansible and remove PPA.
 apt-get -y remove --purge ansible
 apt-add-repository -y --remove ppa:ansible/ansible

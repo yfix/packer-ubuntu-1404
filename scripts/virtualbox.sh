@@ -1,4 +1,6 @@
-set -ex
+#!/bin/bash -eux
+
+apt-get -y install linux-headers-$(uname -r)
 
 # Without libdbus virtualbox would not start automatically after compile
 apt-get -y install --no-install-recommends libdbus-1-3

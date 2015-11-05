@@ -13,4 +13,4 @@ apt-add-repository -y ppa:ansible/ansible
 apt-get -y update
 apt-get -y install ansible
 
-ansible-galaxy install -i geerlingguy.packer-debian geerlingguy.nfs
+#ansible-galaxy install -i geerlingguy.packer-debian geerlingguy.nfs
